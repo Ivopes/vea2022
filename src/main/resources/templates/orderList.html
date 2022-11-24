@@ -40,7 +40,7 @@
             <td th:text="${o.person.lastName}"></td>
             <td th:text="${o.person.address.city}"></td>
             <td>
-            <th:block  th:each="p : ${o.products}" th:text="${p.name}+' | '">
+            <th:block  th:each="p : ${o.products}" th:text="${p.displayName()}+' | '">
             </th:block >
             </td>
     	</tr>
