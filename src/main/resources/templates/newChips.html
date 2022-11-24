@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Insert Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1>Insert product</h1>
+    
+    <form th:action="@{/insertProduct}" method="post" th:object="${product}">
+    	<input type="hidden" th:field="*{id}">
+      <input type="hidden" th:value="${'Dis='+product.getDiscriminatorValue()}" name="product" />
+      Jmeno: <input type="text" th:field="*{name}"/><br/>
+      Pocet: <input type="number" th:field="*{quantity}"/><br/>
+    	<input type="submit" value="Add">
+    </form>
+  
+  </body>
+
+</html>

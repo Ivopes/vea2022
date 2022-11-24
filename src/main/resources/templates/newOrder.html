@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Insert Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1>Insert product</h1>
+    
+    <form th:action="@{/insertOrder}" method="post" th:object="${order}">
+    	<input type="hidden" th:field="*{id}">
+        Person: <select th:field="*{person.id}">
+                  <option th:each="person : ${persons}" th:value="${person.id}" th:text="${person.firstName + ' ' + person.lastName}"></option>
+                </select>
+        Products: <select multiple th:field="*{products}">
+                    <option th:each="product : ${products}"  th:value="${'Id='+product.id+',Dis='+product.getDiscriminatorValue()}" th:text="${product.displayName()}"></option>
+                </select>
+    	<input type="submit" value="Add">
+    </form>
+  
+  </body>
+
+</html>

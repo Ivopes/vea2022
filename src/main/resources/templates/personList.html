@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	  <style>
+		  table {
+			  font-family: arial, sans-serif;
+			  border-collapse: collapse;
+			  width: 100%;
+		  }
+
+		  td, th {
+			  border: 1px solid #dddddd;
+			  text-align: left;
+			  padding: 8px;
+		  }
+
+		  tr:nth-child(even) {
+			  background-color: #dddddd;
+		  }
+	  </style>
+  </head>
+
+  <body>
+    <h1 th:text="${greeting}">Ahoj</h1>
+    <h3 th:text="${name}">david</h3>
+    
+    <table>
+    	<tr>
+    		<th>Jmeno</th>
+    		<th>Prijmeni</th>
+    		<th>test</th>
+    		<th>Ulice</th>
+    		<th>Mesto</th>
+    	</tr>
+    	<tr th:each="p : ${persons}">
+    		<td th:text="${p.firstName}"></td>
+    		<td th:text="${p.lastName}"></td>
+    		<td th:text="${p.test}"></td>
+    		<td th:text="${p.address?.street}"></td>
+    		<td th:text="${p.address?.city}"></td>
+    		<td ><a th:href="@{/editPerson/{id}(id=${p.id})}">Edit</a> </td>
+    	</tr>
+    </table>
+    <a th:href="@{/editNewPerson}">Insert new person</a>
+	<br/>
+	<a th:href="@{/}">Back</a>
+  </body>
+
+</html>

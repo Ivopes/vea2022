@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+      <style>
+          table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+          }
+
+          td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+          }
+
+          tr:nth-child(even) {
+              background-color: #dddddd;
+          }
+      </style>
+  </head>
+
+  <body>
+    <table>
+    	<tr>
+    		<th>Id objednavky</th>
+    		<th>Jmeno</th>
+            <th>prijmeni</th>
+            <th>Adresa</th>
+            <th>produkty</th>
+    	</tr>
+    	<tr th:each="o : ${orders}">
+    		<td th:text="${o.id}"></td>
+            <td th:text="${o.person.firstName}"></td>
+            <td th:text="${o.person.lastName}"></td>
+            <td th:text="${o.person.address.city}"></td>
+            <td>
+            <th:block  th:each="p : ${o.products}" th:text="${p.name}+' | '">
+            </th:block >
+            </td>
+    	</tr>
+    </table>
+    <a th:href="@{/editNewOrder}">Insert new order</a>
+    <br/>
+    <a th:href="@{/}">Back</a>
+  </body>
+
+</html>

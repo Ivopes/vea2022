@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Insert Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1>Insert product</h1>
+    
+    <form th:action="@{/insertProduct}" method="post" th:object="${product}">
+    	<input type="hidden" th:field="*{id}">
+      Jmeno: <input type="text" th:field="*{name}"/><br/>
+      Barva: <input type="text" th:field="*{color}"/><br/>
+    	<input type="submit" value="Add">
+    </form>
+  
+  </body>
+
+</html>

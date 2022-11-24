@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1 th:text="${greeting}">Ahoj</h1>
+    <a th:href="@{/person}">Persons</a><br />
+    <a th:href="@{/address}">Address</a><br />
+    <a th:href="@{/order}">Orders</a><br />
+    <a th:href="@{/product}">Products</a><br />
+
+    <a th:href="@{/im1}">Identity map Test 1</a><br />
+    <a th:href="@{/im2}">Identity map Test 2</a><br />
+    <a th:href="@{/uow1}">Unit OfWork test 1</a><br />
+    <a th:href="@{/uow2}">Unit OfWork test 2</a><br />
+    <a th:href="@{/uow3}">Unit OfWork test 3</a><br />
+    <a th:href="@{/uow4}">Unit OfWork test 4</a><br />
+  
+  </body>
+
+</html>

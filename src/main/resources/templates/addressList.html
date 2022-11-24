@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <style>
+          table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+          }
+
+          td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+          }
+
+          tr:nth-child(even) {
+              background-color: #dddddd;
+          }
+      </style>
+  </head>
+
+  <body>
+    <table>
+    	<tr>
+    		<th>Id</th>
+    		<th>Mesto</th>
+            <th>Ulice</th>
+            <th>Lidi</th>
+    	</tr>
+    	<tr th:each="a : ${address}">
+    		<td th:text="${a.id}"></td>
+    		<td th:text="${a.city}"></td>
+            <td th:text="${a.street}"></td>
+            <td>
+                <th:block  th:each="p : ${a.persons}" th:text="${p.name}+' | '">
+                </th:block >
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/}">Back</a>
+
+  </body>
+
+</html>

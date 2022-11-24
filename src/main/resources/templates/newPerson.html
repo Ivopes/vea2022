@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Insert Person</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+    <h1 th:text="${greeting}">Inser person</h1>
+    
+    <form th:action="@{/insertPerson}" method="post" th:object="${person}">
+    	<input type="hidden" th:field="*{id}"> 
+    	Jmeno: <input type="text" th:field="*{firstName}"/><br/>
+    	Prijmeni: <input type="text" th:field="*{lastName}"/><br/>
+        <input type="hidden" th:field="*{address.id}">
+        Ulice: <input type="text" th:field="*{address.street}"/><br/>
+    	Mesto: <input type="text" th:field="*{address.city}"/><br/>
+    	
+    	<input type="submit" value="Add">
+    </form>
+  
+  </body>
+
+</html>
