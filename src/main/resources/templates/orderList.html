@@ -28,6 +28,7 @@
   <body>
     <table>
     	<tr>
+            <th>Operace</th>
     		<th>Id objednavky</th>
     		<th>Jmeno</th>
             <th>prijmeni</th>
@@ -35,6 +36,7 @@
             <th>produkty</th>
     	</tr>
     	<tr th:each="o : ${orders}">
+            <td ><a th:href="@{/deleteOrder/{id}(id=${o.id})}">Delete</a> </td>
     		<td th:text="${o.id}"></td>
             <td th:text="${o.person.firstName}"></td>
             <td th:text="${o.person.lastName}"></td>

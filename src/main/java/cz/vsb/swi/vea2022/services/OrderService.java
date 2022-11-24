@@ -27,4 +27,9 @@ public class OrderService implements EntityService<Order>{
     public Order findById(long id) {
         return orderRepository.findById(id);
     }
+
+    @Override
+    public void delete(long id) {
+        orderRepository.delete(id);
+    }
 }

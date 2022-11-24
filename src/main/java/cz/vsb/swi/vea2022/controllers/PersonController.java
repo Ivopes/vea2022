@@ -35,7 +35,11 @@ public class PersonController {
 		model.addAttribute("person", new Person());
 		return "newPerson"; 
 	}
-
+	@GetMapping(path="/deletePerson/{id}")
+	public RedirectView deletePerson(@PathVariable long id, Model model) {
+		personService.delete(id);
+		return new RedirectView("/person");
+	}
 	@PostMapping(path="/insertPerson")
 	public RedirectView addPerson(@ModelAttribute Person newPerson, Model model) {
 		personService.insert(newPerson);

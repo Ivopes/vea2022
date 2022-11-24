@@ -13,7 +13,7 @@ import cz.vsb.swi.vea2022.models.Address;
 import cz.vsb.swi.vea2022.models.Person;
 
 @Repository
-public class PersonRepositoryJpa implements PersonRepository {
+public class PersonRepositoryJpa implements EntityRepository<Person> {
 
 	@PersistenceContext
 	private EntityManager em;
@@ -37,6 +37,7 @@ public class PersonRepositoryJpa implements PersonRepository {
 	}
 
 	@Override
+	@Transactional
 	public Person findById(long id) {
 		return em.find(Person.class, id);
 	}
@@ -58,6 +59,13 @@ public class PersonRepositoryJpa implements PersonRepository {
 			em.merge(person);
 			//person.setLastName(person.getLastName() + "aaaa");
 		}
+	}
+
+	@Override
+	@Transactional
+	public void delete(long id) {
+		var o = findById(id);
+		em.remove(o);
 	}
 
 	@Transactional

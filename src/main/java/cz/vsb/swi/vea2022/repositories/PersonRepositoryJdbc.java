@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
 import cz.vsb.swi.vea2022.models.Person;
 
 //@Repository
-public class PersonRepositoryJdbc implements PersonRepository {
+public class PersonRepositoryJdbc implements EntityRepository<Person> {
 
 	@Autowired
 	private DataSource dataSource;
@@ -79,5 +79,10 @@ public class PersonRepositoryJdbc implements PersonRepository {
 					person.getCity(), person.getStreet(),
 					person.getId());
 		}
+	}
+
+	@Override
+	public void delete(long id) {
+
 	}
 }

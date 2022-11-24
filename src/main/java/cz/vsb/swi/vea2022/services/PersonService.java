@@ -2,6 +2,7 @@ package cz.vsb.swi.vea2022.services;
 
 import java.util.List;
 
+import cz.vsb.swi.vea2022.repositories.EntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import cz.vsb.swi.vea2022.repositories.PersonRepositoryJpa;
 public class PersonService implements EntityService<Person>{
 
 	@Autowired
-	private PersonRepositoryJpa personRepository;
+	private EntityRepository<Person> personRepository;
 
 	public List<Person> getAll() {
 		return personRepository.getAll();
@@ -26,30 +27,8 @@ public class PersonService implements EntityService<Person>{
 		return personRepository.findById(id);
 	}
 
-	public void testIdentityMap1() {
-		personRepository.testIdentityMap1();
+	@Override
+	public void delete(long id) {
+		personRepository.delete(id);
 	}
-
-	public void testIdentityMap2() {
-		personRepository.testIdentityMap2();
-	}
-
-	public void testUnitOfWork1() {
-		personRepository.testUnitOfWork1();
-	}
-	public void testUnitOfWork2() {
-		personRepository.testUnitOfWork2();
-	}
-
-	public void testUnitOfWork3() {
-		personRepository.testUnitOfWork3();
-	}
-
-	public void testUnitOfWork4() {
-		personRepository.testUnitOfWork4();
-	}
-	
-	
-
-	
 }

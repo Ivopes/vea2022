@@ -1,6 +1,7 @@
 package cz.vsb.swi.vea2022.repositories;
 
 import cz.vsb.swi.vea2022.models.Order;
+import cz.vsb.swi.vea2022.models.Person;
 import cz.vsb.swi.vea2022.models.Product;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +23,7 @@ public class OrderRepositoryJpa implements EntityRepository<Order> {
 
     @Override
     public Order findById(long id) {
-        return null;
+        return em.find(Order.class, id);
     }
 
     @Override
@@ -42,5 +43,12 @@ public class OrderRepositoryJpa implements EntityRepository<Order> {
             entity.setProducts(products);
             em.merge(entity);
         }
+    }
+
+    @Override
+    @Transactional
+    public void delete(long id) {
+        var o = findById(id);
+        em.remove(o);
     }
 }

@@ -25,4 +25,9 @@ public class ProductService implements EntityService<Product>{
     public Product findById(long id) {
         return productRepository.findById(id);
     }
+
+    @Override
+    public void delete(long id) {
+
+    }
 }

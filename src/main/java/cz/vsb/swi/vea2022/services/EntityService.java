@@ -10,4 +10,6 @@ public interface EntityService<T> {
     void insert(T entity);
 
     T findById(long id);
+    void delete(long id);
+
 }

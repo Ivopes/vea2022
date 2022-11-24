@@ -29,4 +29,9 @@ public class AddressRepositoryJpa implements EntityRepository<Address> {
     @Transactional
     public void insert(Address entity) {
     }
+
+    @Override
+    public void delete(long id) {
+
+    }
 }

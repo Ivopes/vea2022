@@ -24,4 +24,9 @@ public class AddressService implements EntityService<Address> {
     public Address findById(long id) {
         return null;
     }
+
+    @Override
+    public void delete(long id) {
+
+    }
 }

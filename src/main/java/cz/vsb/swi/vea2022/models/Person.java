@@ -18,7 +18,7 @@ public class Person {
 
 	@ManyToOne
 	private Address address = new Address();
-	@OneToMany(mappedBy = "person")
+	@OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
 	private List<Order> orders;
 
 	public Person() {
