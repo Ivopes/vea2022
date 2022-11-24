@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import cz.vsb.swi.vea2022.AddressSerializer;
 
 @Entity
-@JsonSerialize(using = AddressSerializer.class)
+//@JsonSerialize(using = AddressSerializer.class)
 public class Address {
 
 	@Id

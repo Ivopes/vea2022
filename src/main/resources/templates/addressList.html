@@ -37,7 +37,7 @@
     		<td th:text="${a.city}"></td>
             <td th:text="${a.street}"></td>
             <td>
-                <th:block  th:each="p : ${a.persons}" th:text="${p.name}+' | '">
+                <th:block  th:each="p : ${a.persons}" th:text="${p.firstName}+' | '">
                 </th:block >
             </td>
         </tr>

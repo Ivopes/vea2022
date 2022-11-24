@@ -1,5 +1,7 @@
 package cz.vsb.swi.vea2022.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,63 +59,27 @@ public class Person {
 	public String getLastName() {
 		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	@JsonIgnore
 	public Address getAddress() {
 		return address;
 	}
-
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
-	public String getTest() {
-		return "test-" + new Random().nextInt(1000);
-	}
-
 	public long getId() {
 		return id;
 	}
-
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	public void setTest(String test) {
-
-	}
-
 	public String getStreet() {
 		return address.getStreet();
 	}
-
 	public String getCity() {
 		return address.getCity();
-	}
-	
-	public String getName() {
-		return getFirstName();
-	}
-	
-	public String getSurname() {
-		return getLastName();
-	}
-	
-	public void hidenChange(String name) {
-		this.firstName = name; 
-	}
-	public void hidenChange2(String name) {
-		firstName = name; 
-	}
-	public void hidenChange3(String name) {
-		try {
-			Field[] f= Person.class.getFields();
-			Person.class.getDeclaredField("firstName").set(this, name);
-		} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-			e.printStackTrace();
-		}
 	}
 }

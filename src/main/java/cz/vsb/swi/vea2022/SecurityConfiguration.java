@@ -19,22 +19,15 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // @formatter:off
         http
-                //.antMatcher("/")
+                .cors().disable()
+                .csrf().disable()
                 .authorizeHttpRequests((authorize) -> authorize
-
-                        .antMatchers("/order*").hasRole("ADMIN")
-                        .anyRequest().hasRole("USER")
-                        //.anyRequest().authenticated()
+                        .anyRequest().permitAll()
+                        //.antMatchers("/order*").hasRole("ADMIN")
+                        //.anyRequest().hasRole("USER")
                 )
-               /* .authorizeHttpRequests().antMatchers("/").authenticated().and()
-                .antMatcher("/address")
-                .authorizeHttpRequests()
-                    .antMatchers("/address").hasRole("ADMIN")
-                    .and()
-*/
                 .httpBasic(withDefaults())
                 .formLogin(withDefaults());
-       // http.ant
 
         // @formatter:on
         return http.build();
