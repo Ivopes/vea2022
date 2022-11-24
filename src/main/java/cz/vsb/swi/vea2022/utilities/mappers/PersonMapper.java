@@ -1,4 +1,4 @@
-package cz.vsb.swi.vea2022.repositories;
+package cz.vsb.swi.vea2022.utilities.mappers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

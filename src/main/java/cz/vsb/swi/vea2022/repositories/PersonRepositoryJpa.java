@@ -68,44 +68,4 @@ public class PersonRepositoryJpa implements EntityRepository<Person> {
 		em.remove(o);
 	}
 
-	@Transactional
-	public void testIdentityMap1() {
-		Person p = new Person("a", "b", null);
-		p.setId(1);
-		Person p2 = em.merge(p);
-		Person db = em.find(Person.class, 1l);
-		System.out.println("db=" + db + " p=" + p + " p2=" + p2);
-	}
-
-	@Transactional
-	public void testIdentityMap2() {
-		Person old = em.find(Person.class, 1l);
-		Person p = new Person("a", "b", null);
-		p.setId(1);
-		Person p2 = em.merge(p);
-		System.out.println("old=" + old + " p=" + p + " p2=" + p2);
-	}
-
-	@Transactional
-	public void testUnitOfWork1() {
-		Person old = em.find(Person.class, 1l);
-		old.setFirstName("11-" + old.getFirstName());
-	}
-
-	@Transactional
-	public void testUnitOfWork2() {
-		Person old = em.find(Person.class, 1l);
-		old.hidenChange("22-" + old.getFirstName());
-	}
-
-	@Transactional
-	public void testUnitOfWork3() {
-		Person old = em.find(Person.class, 1l);
-		old.hidenChange2("33-" + old.getFirstName()+"-".repeat(1000));
-	}
-	@Transactional
-	public void testUnitOfWork4() {
-		Person old = em.find(Person.class, 1l);
-		old.hidenChange3("44-" + old.getFirstName());
-	}
 }

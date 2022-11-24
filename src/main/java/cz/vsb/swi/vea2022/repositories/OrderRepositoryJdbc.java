@@ -1,30 +1,29 @@
 package cz.vsb.swi.vea2022.repositories;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
-import javax.annotation.PostConstruct;
-import javax.sql.DataSource;
-
+import cz.vsb.swi.vea2022.models.Order;
+import cz.vsb.swi.vea2022.models.Person;
 import cz.vsb.swi.vea2022.utilities.mappers.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
-
-import cz.vsb.swi.vea2022.models.Person;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
+import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.List;
+
 //@Repository
-public class PersonRepositoryJdbc implements EntityRepository<Person> {
+public class OrderRepositoryJdbc implements EntityRepository<Order> {
 
 	@Autowired
 	private DataSource dataSource;
 	private JdbcTemplate jdbcTemplate;
 	private SimpleJdbcInsert personInsert;
-	
+
 	@PostConstruct
 	public void init() {
 		jdbcTemplate = new JdbcTemplate(dataSource);
@@ -50,35 +49,27 @@ public class PersonRepositoryJdbc implements EntityRepository<Person> {
 		}
 	}
 
-	public PersonRepositoryJdbc() {
+	public OrderRepositoryJdbc() {
 	}
 
 	@Override
-	public List<Person> getAll() {
-		return jdbcTemplate.query("select * from Person", new PersonMapper());
+	public List<Order> getAll() {
+		return null;
+		/*return jdbcTemplate.query("select * from Person", new PersonMapper());*/
 	}
 
 	@Override
-	public Person findById(long id) {
-		return jdbcTemplate.queryForObject(
-				"select * from Person where id=?", 
-				new PersonMapper(), id);
+	public Order findById(long id) {
+	/*	return jdbcTemplate.queryForObject(
+				"select * from Order where id=?",
+				new PersonMapper(), id);*/
+		return null;
 	}
 	
 	@Override
-	public void insert(Person person) {
-		if (person.getId() == 0) {
-			personInsert.execute(new BeanPropertySqlParameterSource(person));
-		} else {
-			jdbcTemplate.update("update Person "
-					+ "set name=?,"
-					+ "set surname=?,"
-					+ "set city=?,"
-					+ "set street=?"
-					+ "where id=?;", 
-					person.getFirstName(), person.getLastName(),
-					person.getCity(), person.getStreet(),
-					person.getId());
+	public void insert(Order order) {
+		if (order.getId() == 0) {
+			personInsert.execute(new BeanPropertySqlParameterSource(order));
 		}
 	}
 

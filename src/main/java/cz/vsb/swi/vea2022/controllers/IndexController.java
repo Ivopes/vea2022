@@ -18,42 +18,4 @@ public class IndexController {
 	public String index( Model model) {
 		return "index";
 	}
-
-	@GetMapping(path = "im1")
-	public String testIdentityMap1() {
-		personService.testIdentityMap1();
-		return "index";
-	}
-
-	@GetMapping(path = "im2")
-	public String testIdentityMap2() {
-		personService.testIdentityMap2();
-		return "index";
-	}
-
-	@GetMapping(path = "uow1")
-	public RedirectView testUnitOfWork1() {
-		personService.testUnitOfWork1();
-		return new RedirectView("list");
-	}
-
-	@GetMapping(path = "uow2")
-	public RedirectView testUnitOfWork2() {
-		personService.testUnitOfWork2();
-		return new RedirectView("list");
-	}
-
-	@GetMapping(path = "uow3")
-	public RedirectView testUnitOfWork3() {
-		personService.testUnitOfWork3();
-		return new RedirectView("list");
-	}
-
-	@GetMapping(path = "uow4")
-	public RedirectView testUnitOfWork4() {
-		personService.testUnitOfWork4();
-		return new RedirectView("list");
-	}
-
-	
 }
