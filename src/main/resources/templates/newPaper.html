@@ -12,6 +12,7 @@
     
     <form th:action="@{/insertProduct}" method="post" th:object="${product}">
     	<input type="hidden" th:field="*{id}">
+      <input type="hidden" th:value="${'Dis='+product.getDiscriminatorValue()}" name="product" />
       Jmeno: <input type="text" th:field="*{name}"/><br/>
       Barva: <input type="text" th:field="*{color}"/><br/>
     	<input type="submit" value="Add">

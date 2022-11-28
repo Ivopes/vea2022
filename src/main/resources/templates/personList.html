@@ -42,7 +42,6 @@
 			<td ><a th:href="@{/deletePerson/{id}(id=${p.id})}">Delete</a> </td>
     		<td th:text="${p.firstName}"></td>
     		<td th:text="${p.lastName}"></td>
-    		<td th:text="${p.test}"></td>
     		<td th:text="${p.address?.street}"></td>
     		<td th:text="${p.address?.city}"></td>
     	</tr>
