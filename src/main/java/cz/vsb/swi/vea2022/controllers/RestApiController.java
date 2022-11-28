@@ -33,7 +33,8 @@ public class RestApiController {
 		return personService.getAll();
 	}
 	@PostMapping("/api/person")
-	public Person postPerson(@RequestBody Person person){
+	public Person postPerson(@RequestBody Person person) {
+		personService.insert(person);
 		return person;
 	}
 	@GetMapping("/api/address")
