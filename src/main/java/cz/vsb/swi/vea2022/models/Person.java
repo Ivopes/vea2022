@@ -1,6 +1,7 @@
 package cz.vsb.swi.vea2022.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -67,6 +68,13 @@ public class Person {
 	public Address getAddress() {
 		return address;
 	}
+
+	public long getAddressId() {
+		return address.getId();
+	}
+	public void setAddressId(long id) {
+		address.setId(id);
+	}
 	public void setAddress(Address address) {
 		this.address = address;
 	}
@@ -75,11 +83,5 @@ public class Person {
 	}
 	public void setId(long id) {
 		this.id = id;
-	}
-	public String getStreet() {
-		return address.getStreet();
-	}
-	public String getCity() {
-		return address.getCity();
 	}
 }

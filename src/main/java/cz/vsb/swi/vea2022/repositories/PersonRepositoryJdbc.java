@@ -77,7 +77,7 @@ public class PersonRepositoryJdbc implements EntityRepository<Person> {
 					+ "set street=?"
 					+ "where id=?;", 
 					person.getFirstName(), person.getLastName(),
-					person.getCity(), person.getStreet(),
+					person.getAddress().getCity(), person.getAddress().getStreet(),
 					person.getId());
 		}
 	}

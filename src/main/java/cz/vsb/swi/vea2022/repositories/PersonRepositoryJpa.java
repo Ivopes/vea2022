@@ -46,11 +46,13 @@ public class PersonRepositoryJpa implements EntityRepository<Person> {
 	@Transactional
 	public void insert(Person person) {
 		if (person.getId() == 0) {
-			var addresses = em.createQuery("select a from Address a where a.city like :cityName and a.street like :streetName", Address.class)
-							.setParameter("cityName", person.getCity())
-							.setParameter("streetName", person.getStreet())
+			var addresses = em.createQuery("select a from Address a where (a.city like :cityName and a.street like :streetName) or a.id = :addressId", Address.class)
+							.setParameter("cityName", person.getAddress().getCity())
+							.setParameter("streetName", person.getAddress().getStreet())
+							.setParameter("addressId", person.getAddress().getId())
 							.getResultList();
 			if(addresses.size() == 1) person.setAddress(addresses.get(0));
+
 			em.persist(person.getAddress());
 			em.persist(person);
 		} else {
