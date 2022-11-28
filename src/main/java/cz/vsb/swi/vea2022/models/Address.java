@@ -1,5 +1,6 @@
 package cz.vsb.swi.vea2022.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import cz.vsb.swi.vea2022.AddressSerializer;
@@ -51,10 +53,21 @@ public class Address {
 		this.city = city;
 	}
 
+	@JsonIgnore
 	public List<Person> getPersons() {
 		return persons;
 	}
-
+	public List<Long> getPersonsId() {
+		return persons.stream().map(p -> p.getId()).toList();
+	}
+	public void setPersonsId(long[] ids) {
+		persons = new ArrayList<>();
+		for (int i =0; i < ids.length; i++) {
+			var p = new Person();
+			p.setId(ids[i]);
+			persons.add(p);
+		}
+	}
 	public void setPersons(List<Person> persons) {
 		this.persons = persons;
 	}

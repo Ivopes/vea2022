@@ -2,6 +2,7 @@ package cz.vsb.swi.vea2022.repositories;
 
 import cz.vsb.swi.vea2022.models.Address;
 import cz.vsb.swi.vea2022.models.Order;
+import cz.vsb.swi.vea2022.models.Person;
 import cz.vsb.swi.vea2022.models.Product;
 import org.springframework.stereotype.Repository;
 
@@ -22,12 +23,24 @@ public class AddressRepositoryJpa implements EntityRepository<Address> {
 
     @Override
     public Address findById(long id) {
-        return null;
+        return em.find(Address.class, id);
     }
 
     @Override
     @Transactional
     public void insert(Address entity) {
+        if (entity.getId() == 0) {
+            var persons = entity.getPersons();
+            persons.forEach(o -> em.persist(o));
+            //em.persist(product.getOrders());
+            em.persist(entity);
+        } else {
+            for (var person: entity.getPersons()) {
+                em.merge(person);
+            }
+
+            em.merge(entity);
+        }
     }
 
     @Override

@@ -17,12 +17,12 @@ public class AddressService implements EntityService<Address> {
 
     @Override
     public void insert(Address entity) {
-
+        addressEntityRepository.insert(entity);
     }
 
     @Override
     public Address findById(long id) {
-        return null;
+        return addressEntityRepository.findById(id);
     }
 
     @Override

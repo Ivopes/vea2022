@@ -1,5 +1,7 @@
 package cz.vsb.swi.vea2022.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +40,12 @@ public class Order {
     public void setId(long id) {
         this.id = id;
     }
-
+    @JsonIgnore
     public List<Product> getProducts() {
         return products;
+    }
+    public List<Long> getProductsId() {
+        return products.stream().map(p -> p.getId()).toList();
     }
 
     public void setProducts(List<Product> products) {
